@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 //
-
+import AuthReducer from './AuthReducer';
 /*
   Reducers in application:
     1. libraries
     2. selection
 */
 export default combineReducers({
-  test: ()=>[]     // state : reducer
+  auth: AuthReducer     // state : reducer
 });
