@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 import firebase from 'firebase';
 //
 import { Button, Card, CardSection, Input, Spinner } from './common';
-import { emailChanged, passwordChanged } from '../actions';
+import { emailChanged, passwordChanged, loginUser } from '../actions';
 //
 class LoginForm extends Component {
   login() {
-  
+
   }
 
   onLoginSuccess() {
@@ -23,19 +23,25 @@ class LoginForm extends Component {
       return <Spinner size="small" />;
     }
     return (
-      <Button onPress={this.login.bind(this)}>
+      <Button onPress={this.onButtonPress.bind(this)}>
         Log In
       </Button>
     );
   }
 
-  onEmailChange(text){
+  onEmailChange(text) {
     this.props.emailChanged(text);
   }
 
-  onPasswordChange(text){
+  onPasswordChange(text) {
     this.props.passwordChanged(text);
-  }z
+  }
+
+  onButtonPress() {
+    const { email, password } = this.props;
+    debugger;
+    this.props.loginUser({ email, password });
+  }
 
   render() {
     return (
@@ -66,11 +72,13 @@ const styles = {
   }
 }
 
-const mapStateToProps = state=> {
+const mapStateToProps = state => {
   return {
     email: state.auth.email,
     password: state.auth.password
   }
 }
 
-export default connect(mapStateToProps, {emailChanged, passwordChanged})(LoginForm);
+export default connect(mapStateToProps, {
+  emailChanged, passwordChanged, loginUser
+})(LoginForm);
