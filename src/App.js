@@ -6,7 +6,7 @@ import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
 //
 import { Header, Button, Spinner, CardSection } from './components/common';
-import RouterComponent from './Router';
+import Router from './Router';
 import reducers from './reducers'
 //
 export default class App extends Component {
@@ -27,7 +27,7 @@ export default class App extends Component {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     return (
       <Provider store={store}>
-        <RouterComponent />
+        <Router />
       </Provider>
     );
   }
