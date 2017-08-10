@@ -6,6 +6,7 @@ import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
 //
 import { Header, Button, Spinner, CardSection } from './components/common';
+import LoginForm from './components/LoginForm';
 import reducers from './reducers'
 //
 export default class App extends Component {

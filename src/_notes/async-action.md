@@ -1,6 +1,6 @@
 ## using Redux Thunk middleware
 
-Normal action are functions return an action. Action is an object with a 'type' property
+Normal action creators are functions return an action. Action is an object with a 'type' property
 
 Action creators with Thunk returns a function. The function will be called with dispatch
 

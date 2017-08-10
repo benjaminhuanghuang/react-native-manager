@@ -9,32 +9,17 @@ import { emailChanged, passwordChanged } from '../actions';
 //
 class LoginForm extends Component {
   login() {
-    const { email, password } = this.state;
-    this.setState({ error: '', loading: true });
-    firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(this.onLoginSuccess.bind(this))
-      .catch(() => {
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-          .then(this.onLoginSuccess.bind(this))
-          .catch(this.onLoginFail.bind(this));
-      });
+  
   }
 
   onLoginSuccess() {
-    this.setState({
-      email: '',
-      password: '',
-      loading: false,
-      error: ''
-    });
   }
 
   onLoginFail() {
-    this.setState({ loading: false, error: 'Authentication Failed.' });
   }
 
   renderButton() {
-    if (this.state.loading) {
+    if (this.props.loading) {
       return <Spinner size="small" />;
     }
     return (
@@ -50,7 +35,7 @@ class LoginForm extends Component {
 
   onPasswordChange(text){
     this.props.passwordChanged(text);
-  }
+  }z
 
   render() {
     return (
@@ -64,7 +49,7 @@ class LoginForm extends Component {
             secureTextEntry
             onChangeText={this.onPasswordChange.bind(this)} />
         </CardSection>
-        <Text style={styles.errorTextStyle}> {this.state.error}</Text>
+        <Text style={styles.errorTextStyle}> {this.props.error}</Text>
         <CardSection>
           {this.renderButton()}
         </CardSection>

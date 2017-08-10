@@ -22,7 +22,6 @@ const styles = {
     fontSize: 18,
     lineHeight: 23,
     flex: 2,
-    borderWidth: 1
   },
   labelStyle: {
     paddingLeft: 20,
