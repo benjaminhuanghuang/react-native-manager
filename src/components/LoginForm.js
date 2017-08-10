@@ -5,16 +5,9 @@ import { connect } from 'react-redux';
 import firebase from 'firebase';
 //
 import { Button, Card, CardSection, Input, Spinner } from './common';
-import { emailChanged } from '../actions';
+import { emailChanged, passwordChanged } from '../actions';
 //
 class LoginForm extends Component {
-  state = {
-    email: '',
-    password: '',
-    error: '',
-    loading: false,
-  };
-
   login() {
     const { email, password } = this.state;
     this.setState({ error: '', loading: true });
@@ -55,17 +48,21 @@ class LoginForm extends Component {
     this.props.emailChanged(text);
   }
 
+  onPasswordChange(text){
+    this.props.passwordChanged(text);
+  }
+
   render() {
     return (
       <Card>
         <CardSection>
-          <Input value={this.state.email} label="Email:" placeholder="user@email"
+          <Input value={this.props.email} label="Email:" placeholder="user@email"
             onChangeText={this.onEmailChange.bind(this)} />
         </CardSection>
         <CardSection>
-          <Input value={this.state.password} label="Password:" placeholder="password"
+          <Input value={this.props.password} label="Password:" placeholder="password"
             secureTextEntry
-            onChangeText={text => this.setState({ password: text })} />
+            onChangeText={this.onPasswordChange.bind(this)} />
         </CardSection>
         <Text style={styles.errorTextStyle}> {this.state.error}</Text>
         <CardSection>
@@ -84,4 +81,11 @@ const styles = {
   }
 }
 
-export default connect(null, {emailChanged})(LoginForm);
+const mapStateToProps = state=> {
+  return {
+    email: state.auth.email,
+    password: state.auth.password
+  }
+}
+
+export default connect(mapStateToProps, {emailChanged, passwordChanged})(LoginForm);

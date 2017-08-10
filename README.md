@@ -12,4 +12,4 @@
 
   cd <project>
 
-  npm install -S react-redux redux firebase
+  npm install -S react-redux redux redux-thunk firebase
