@@ -6,11 +6,11 @@ import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
 //
 import { Header, Button, Spinner, CardSection } from './components/common';
-import LoginForm from './components/LoginForm';
+import RouterComponent from './Router';
 import reducers from './reducers'
 //
 export default class App extends Component {
-  
+
   componentWillMount() {
     var config = {
       apiKey: "AIzaSyBEWculCMaccsyX_B24vJQ_7QLCZlvpqeU",
@@ -21,15 +21,14 @@ export default class App extends Component {
       messagingSenderId: "1086665679347"
     };
     firebase.initializeApp(config);
-  } 
+  }
 
   render() {
     const store = createStore(reducers, {}, applyMiddleware(ReduxThunk));
     return (
-      <Provider store = {store}>
-        <LoginForm></LoginForm>
+      <Provider store={store}>
+        <RouterComponent />
       </Provider>
     );
   }
 }
- 
