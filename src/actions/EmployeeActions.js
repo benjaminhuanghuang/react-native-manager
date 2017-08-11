@@ -2,9 +2,9 @@ import {
   EMPLOYEE_UPDATE
 } from './types';
 
-export const employeeUpdate = ({prop, value}) => {
+export const employeeUpdate = ({ prop, value }) => {
   return {
-    type: EMAIL_CHANGED,
-    payload: {prop, value}
+    type: EMPLOYEE_UPDATE,
+    payload: { prop, value }
   }
 }

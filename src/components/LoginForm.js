@@ -67,8 +67,8 @@ const mapStateToProps = state => {
     password: state.auth.password,
     error: state.auth.error,
     loading: state.auth.loading
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps, {
   emailChanged, passwordChanged, loginUser
