@@ -8,16 +8,6 @@ import { Button, Card, CardSection, Input, Spinner } from './common';
 import { emailChanged, passwordChanged, loginUser } from '../actions';
 //
 class LoginForm extends Component {
-  login() {
-
-  }
-
-  onLoginSuccess() {
-  }
-
-  onLoginFail() {
-  }
-
   renderButton() {
     if (this.props.loading) {
       return <Spinner size="small" />;
