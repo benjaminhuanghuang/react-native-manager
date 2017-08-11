@@ -9,7 +9,7 @@ class ListItem extends Component {
     const { name } = this.props.employee;
     return (
       <CardSection>
-        <Text style={StyleSheet.title}>
+        <Text style={styles.title}>
           {name}
         </Text>
       </CardSection>

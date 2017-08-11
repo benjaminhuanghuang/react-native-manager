@@ -12,5 +12,5 @@ import EmployeeReducer from './EmployeeReducer';
 export default combineReducers({
   auth: AuthReducer,     // state : reducer
   employeeForm: EmployeeFormReducer,
-  employee: EmployeeReducer
+  employees: EmployeeReducer
 });

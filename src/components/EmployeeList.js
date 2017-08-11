@@ -11,7 +11,6 @@ import { employeeFetch } from '../actions'
 class EmployeeList extends Component {
   componentWillMount() {
     this.props.employeeFetch();
-
     this.createDataSource(this.props)
   }
 
@@ -19,6 +18,7 @@ class EmployeeList extends Component {
     this.createDataSource(nextProps);
   }
 
+  // employees === this.props.employees
   createDataSource({ employees }) {
     const ds = new ListView.DataSource({
       rowHasChanged: (re1, r2) => r1 !== r2
@@ -41,8 +41,9 @@ class EmployeeList extends Component {
 }
 
 const mapStateToProps = state => {
+  // transform object to array
   const employees = _.map(state.employees, (val, uid) => {
-    return { ...val, uid };
+    return { ...val, uid };  // {shift:'Monday', name:'s', id:'xxxx' }
   });
   return { employees };
 }

@@ -3,6 +3,7 @@
 ## Reference
   The Complete React Native and Redux Course - Stephen Grider
   https://www.udemy.com/the-complete-react-native-and-redux-course/
+  https://github.com/StephenGrider/ReactNativeReduxCasts
 
 ## Start up
   

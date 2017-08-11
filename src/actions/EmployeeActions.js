@@ -20,7 +20,7 @@ export const employeeCreate = ({ name, phone, shift }) => {
       .push({ name, phone, shift })
       .then(() => {
         dispatch({ type: EMPLOYEE_CREATE });
-        Actions.employeeList({ type: 'reset' })
+        Actions.employeeList({ type: 'reset' });
       });
   };
 };
@@ -32,5 +32,5 @@ export const employeeFetch = () => {
     .on('value', snapshot=> {
       dispatch({type: EMPLOYEES_FETCH_SUCCESS, payload: snapshot.val()})
     });
-  }
-}
+  };
+};

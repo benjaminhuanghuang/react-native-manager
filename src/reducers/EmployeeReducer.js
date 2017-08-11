@@ -2,11 +2,7 @@ import {
   EMPLOYEES_FETCH_SUCCESS
 } from '../actions/types';
 
-const INITIAL_STATE = {
-  name:'',
-  phone:'',
-  shift:''
-};
+const INITIAL_STATE = {};
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {

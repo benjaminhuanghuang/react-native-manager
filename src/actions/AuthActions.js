@@ -34,7 +34,8 @@ export const loginUser = ({ email, password }) => {
 
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((user) => loginUserSuccess(dispatch, user))
-      .catch(() => {
+      .catch((err) => {
+        console.log(err)
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then((user) => loginUserSuccess(dispatch, user))
           .catch(() => loginUserFail(dispatch));
@@ -49,5 +50,5 @@ const loginUserFail = (dispatch) => {
 const loginUserSuccess = (dispatch, user) => {
   dispatch({ type: LOGIN_USER_SUCCESS, payload: user });
 
-  Actions.employeeList();
+  Actions.employeeList();  // employeeList was defined in Router
 }
