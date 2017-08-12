@@ -6,6 +6,7 @@
   ```
 
 ## Transform object to array
+  map the {key: values} to [{v1, v2, v3, key}...]
 ```
   import _ from 'lodash';
 
