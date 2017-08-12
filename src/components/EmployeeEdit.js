@@ -3,12 +3,17 @@ import { View, Text, Picker } from 'react-native';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import _ from 'lodash';
+import Communications from 'react-native-communications'
 //
-import { Card, CardSection, Button } from './common';
+import { Card, CardSection, Button, Confirm } from './common';
 import { employeeUpdate, employeeSave} from '../actions';
 import EmployeeForm from './EmployeeForm'
 //
 class EmployeeEdit extends Component {
+  state = {
+    showModal: false
+  };
+
   componentWillMount(){
     _.each(this.props.employee, (value, prop)=>{
       this.props.employeeUpdate({prop, value});
@@ -20,7 +25,12 @@ class EmployeeEdit extends Component {
     // props.employee.uid comes from Actions.employeeEdit({employee: this.props.employee})
     this.props.employeeSave({ name, phone, shift, uid: this.props.employee.uid});
   }
- 
+
+  onTextButtonPress() {
+    const { phone, shift } = this.props;
+    Communications.text(phone, `Your coming shift is on ${shift}`);
+  }
+
   render() {
     return (
       <Card> 
@@ -28,6 +38,15 @@ class EmployeeEdit extends Component {
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}> Save Changed </Button>
         </CardSection>
+        <CardSection>
+          <Button onPress={this.onTextButtonPress.bind(this)}> Text Schedule </Button>
+        </CardSection>
+        <CardSection>
+          <Button onPress={()=>this.setState({showModal: !this.state.showModal})}> Fire Employee </Button>
+        </CardSection>
+        <Confirm visible={this.state.showModal} >
+            Are your sure your want to delete this?
+        </Confirm>
       </Card>
     );
   }
